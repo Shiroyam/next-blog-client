@@ -8,7 +8,7 @@ export const Posts: FC = () => {
     <div className={s.posts}>
       <div className={s.posts__textContainer}>
         <div className={s.posts__header}>
-          <Skeleton variant="text" width={400} />
+          <Skeleton variant="text" width={360} />
         </div>
         <div className={s.posts__text}>
           <Skeleton variant="rectangular" width={360} height={80} />
