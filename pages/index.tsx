@@ -4,10 +4,10 @@ import { Navbar } from "../app/components/navbar/Navbar";
 
 const Home: NextPage = () => {
   return (
-    <>
+    <div>
       <Navbar />
       <Menu />
-    </>
+    </div>
   );
 };
 

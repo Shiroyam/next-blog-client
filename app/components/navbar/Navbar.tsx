@@ -3,6 +3,7 @@ import s from "./navbar.module.scss";
 import SearchIcon from "@mui/icons-material/Search";
 import PersonIcon from "@mui/icons-material/Person";
 import CreateIcon from "@mui/icons-material/Create";
+import { Posts } from "./posts/Posts";
 
 export const Navbar: FC = () => {
   return (
@@ -15,6 +16,7 @@ export const Navbar: FC = () => {
           <CreateIcon className={s.navbar__iconCreate} />
         </div>
       </div>
+      <Posts></Posts>
     </nav>
   );
 };
