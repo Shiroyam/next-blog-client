@@ -1,0 +1,39 @@
+.post {
+  width: 720px;
+  .post__headerContaider {
+    width: 720px;
+    height: 452px;
+    background: #FAFAFA;
+    padding: 129px 70px;
+    position: relative;
+    .post__dateContainer {
+      position: relative;
+      z-index: 1;
+      padding-bottom: 9px;
+      display: flex;
+      position: relative;
+      .post__iconContainer {
+        display: flex;
+        color: #c1c1c1; 
+        .post__icon {
+          height: 25px;
+        }
+      }
+    }
+    .post__headerText {
+      position: relative;
+      z-index: 1;
+      .post__header {
+        padding-bottom: 14px;
+        max-width: 600px;
+      }
+      .post__description {
+        max-width: 590px;
+      }
+    }
+  }
+  .post__textContainer {
+    padding: 72px 70px;
+    max-width: 584px;
+  }
+}

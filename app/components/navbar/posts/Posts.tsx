@@ -1,32 +1,31 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import VisibilityIcon from "@mui/icons-material/Visibility";
-import Skeleton from "@mui/material/Skeleton";
 import s from "./posts.module.scss";
+import { PostsSkeleton } from "../../skeleton/postsSkeleton/PostsSleleton";
 
 export const Posts: FC = () => {
+  const [loading, setLoading] = useState(false);
+
   return (
-    <div className={s.posts}>
-      <div className={s.posts__textContainer}>
-        <div className={s.posts__header}>
-          <Skeleton variant="text" width={360} />
-        </div>
-        <div className={s.posts__text}>
-          <Skeleton variant="rectangular" width={360} height={80} />
-        </div>
-        <div className={s.posts__dateContainer}>
-          <div className={s.posts__date}>
-            <Skeleton variant="text" width={172} />
-          </div>
-          <div className={s.posts__iconContainer}>
-            <div className={s.posts__number}>
-              <Skeleton variant="text" width={26} />
+    <>
+      {loading ? (
+        <div className={s.posts}>
+          <div className={s.posts__textContainer}>
+            <div className={s.posts__header}></div>
+            <div className={s.posts__text}></div>
+            <div className={s.posts__dateContainer}>
+              <div className={s.posts__date}></div>
+              <div className={s.posts__iconContainer}>
+                <div className={s.posts__number}></div>
+                <VisibilityIcon className={s.posts__icon} />
+              </div>
             </div>
-            <VisibilityIcon className={s.posts__icon} />
           </div>
+          {/* <img className={s.posts__img}></img> */}
         </div>
-      </div>
-      <Skeleton variant="rectangular" className={s.posts__img} />
-      {/* <img className={s.posts__img}></img> */}
-    </div>
+      ) : (
+        <PostsSkeleton />
+      )}
+    </>
   );
 };
