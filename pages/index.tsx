@@ -30,6 +30,7 @@ const Home: NextPage = () => {
           </div>
         </div>
       </div>
+      
     </>
   );
 };
