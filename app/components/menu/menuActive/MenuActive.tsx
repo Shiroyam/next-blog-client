@@ -1,6 +1,7 @@
 import { FC } from "react";
 import s from "./menuActive.module.scss";
 import CloseIcon from "@mui/icons-material/Close";
+import Link from "next/link";
 import { useDispatch } from "react-redux";
 import { closeMenu } from "../../../redux/menu/action";
 
@@ -12,28 +13,28 @@ export const MenuActive: FC = () => {
 
   return (
     <>
-      <div onClick={()=>dispatch(closeMenu())} className={s.menuActive}>
+      <div onClick={() => dispatch(closeMenu())} className={s.menuActive}>
         <div onClick={onClickBackground} className={s.menuActive__content}>
           <div className={s.menuActive__routes}>
             {true ? (
               <>
                 <div className={s.menuActive__headerName}>Pupkin</div>
-                <a href="" className={s.menuActive__route}>
-                  Главная
-                </a>
-                <a href="/profile" className={s.menuActive__route}>
-                  Мой профиль
-                </a>
-                <a href="/create" className={s.menuActive__route}>
-                  Создать запись
-                </a>
+                <Link href="/">
+                  <a className={s.menuActive__route}>Главная</a>
+                </Link>
+                <Link href="/profile">
+                  <a className={s.menuActive__route}> Мой профиль </a>
+                </Link>
+                <Link href="/create">
+                  <a className={s.menuActive__route}>Создать запись</a>
+                </Link>
                 <div className={s.menuActive__route}>Выйти</div>
               </>
             ) : (
               <>
-                <a href="" className={s.menuActive__route}>
+                <Link href="/" className={s.menuActive__route}>
                   Главная
-                </a>
+                </Link>
                 <div className={s.menuActive__route}>Зарегистрироваться</div>
                 <div className={s.menuActive__route}>Войти</div>
               </>
