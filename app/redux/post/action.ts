@@ -1,15 +1,21 @@
 import axios from "axios";
-import { Dispatch } from "react";
-import { AnyAction } from "redux";
-
-export const getPosts = () => async (dispatch: Dispatch<AnyAction>) => {
+import { AppDispatch } from "..";
+import { IPost } from "../types";
+import { postSlice } from "./reducer";
+export const getPosts = () => async (dispatch: AppDispatch) => {
   try {
-    const response = await axios.get("http://localhost:3050/post");
-    dispatch({
-      type: "GET_POST",
-      payload: response.data,
-    });
+    const response = await axios.get<IPost[]>("http://localhost:3050/post");
+    dispatch(postSlice.actions.postsFetchingSuccess(response.data));
   } catch (error) {
-    alert(error);
+    dispatch(postSlice.actions.postsFetchingErorr("ошибка"));
+  }
+};
+
+export const getPost = (id: string) => async (dispatch: AppDispatch) => {
+  try {
+    const response = await axios.get<IPost>(`http://localhost:3050/post/${id}`);
+    dispatch(postSlice.actions.postFetchingSuccess(response.data));
+  } catch (error) {
+    dispatch(postSlice.actions.postFetchingErorr("ошибка"));
   }
 };

@@ -1,14 +1,13 @@
 import { FC } from "react";
 import s from "./menu.module.scss";
 import MenuIcon from "@mui/icons-material/Menu";
-import { useDispatch } from "react-redux";
-import { openMenu } from "../../redux/menu/action";
+import { openMenu } from "../../redux/menu/reducer";
 import { MenuActive } from "./menuActive/MenuActive";
-import { useTypesSelector } from "../../hooks/useTypeSelector";
+import { useTypesSelector, useAppDispatch } from "../../hooks/useTypeSelector";
 
 export const Menu: FC = () => {
-  const dispatch = useDispatch();
-  const { flagMenu } = useTypesSelector((state) => state.menu);
+  const dispatch = useAppDispatch();
+  const { flagMenu } = useTypesSelector((state) => state.menuReducer);
   return (
     <>
       <div className={s.menu}>

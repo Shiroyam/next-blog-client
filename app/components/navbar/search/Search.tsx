@@ -1,13 +1,12 @@
 import { FC } from "react";
 import s from "./search.module.scss";
 import CloseIcon from "@mui/icons-material/Close";
-import { useTypesSelector } from "../../../hooks/useTypeSelector";
-import { useDispatch } from "react-redux";
-import { closeSearch } from "../../../redux/search/action";
+import { useAppDispatch, useTypesSelector } from "../../../hooks/useTypeSelector";
+import { closeSearch } from "../../../redux/search/reducer";
 
 export const Search: FC = () => {
-  const dispatch = useDispatch();
-  const { flagSearch } = useTypesSelector((state) => state.search);
+  const dispatch = useAppDispatch();
+  const { flagSearch } = useTypesSelector((state) => state.searchReducer);
   return (
     <>
       {flagSearch && (

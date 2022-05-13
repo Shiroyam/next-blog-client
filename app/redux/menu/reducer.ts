@@ -1,29 +1,24 @@
-interface MenuAction {
-  type: string;
-}
-
-interface MenuState {
-  flagMenu: boolean;
-}
-
+import { createSlice } from "@reduxjs/toolkit";
 interface IState {
   flagMenu: boolean;
 }
 
-const initState: IState = {
+const initialState: IState = {
   flagMenu: false,
 };
 
-export const menuReducer = (
-  state = initState,
-  action: MenuAction
-): MenuState => {
-  switch (action.type) {
-    case "OPEN_MENU":
-      return { ...state, flagMenu: true };
-    case "CLOSE_MENU":
-      return { ...state, flagMenu: false };
-    default:
-      return state;
-  }
-};
+export const menuSlice = createSlice({
+  name: "menu",
+  initialState,
+  reducers: {
+    openMenu(state: IState) {
+      state.flagMenu = true;
+    },
+    closeMenu(state: IState) {
+      state.flagMenu = false;
+    },
+  },
+});
+
+export const { openMenu, closeMenu } = menuSlice.actions;
+export default menuSlice.reducer;

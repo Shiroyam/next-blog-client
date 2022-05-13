@@ -2,11 +2,11 @@ import { FC } from "react";
 import s from "./menuActive.module.scss";
 import CloseIcon from "@mui/icons-material/Close";
 import Link from "next/link";
-import { useDispatch } from "react-redux";
-import { closeMenu } from "../../../redux/menu/action";
+import { closeMenu } from "../../../redux/menu/reducer";
+import { useAppDispatch } from "../../../hooks/useTypeSelector";
 
 export const MenuActive: FC = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const onClickBackground = (e: any) => {
     e.stopPropagation();
   };

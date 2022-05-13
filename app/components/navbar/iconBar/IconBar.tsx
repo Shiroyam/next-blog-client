@@ -4,7 +4,7 @@ import PersonIcon from "@mui/icons-material/Person";
 import CreateIcon from "@mui/icons-material/Create";
 import s from "./iconBar.module.scss";
 import { useDispatch } from "react-redux";
-import { openSearch } from "../../../redux/search/action";
+import { openSearch } from "../../../redux/search/reducer";
 
 export const IconBar: FC = () => {
   const dispatch = useDispatch();

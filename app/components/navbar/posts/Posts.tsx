@@ -6,36 +6,44 @@ import { useDispatch } from "react-redux";
 import { useTypesSelector } from "../../../hooks/useTypeSelector";
 import { getPosts } from "../../../redux/post/action";
 import Image from "next/image";
+import Link from "next/link";
 
 export const Posts: FC = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getPosts());
   }, []);
-  const { posts } = useTypesSelector((state) => state.posts);
+  const { posts, isLoading } = useTypesSelector((state) => state.postReducer);
   return (
     <>
-      {posts ? (
+      {isLoading ? (
         <>
           {posts.map((post: any) => (
-            <div key={post.id} className={s.posts}>
-              <div className={s.posts__textContainer}>
-                <div className={s.posts__header}>{post.title}</div>
-                <div className={s.posts__text}>{post.description}</div>
-                <div className={s.posts__dateContainer}>
-                  <div className={s.posts__date}></div>
-                  <div className={s.posts__iconContainer}>
-                    <div className={s.posts__number}></div>
-                    <VisibilityIcon className={s.posts__icon} />
+            <Link href={`/post/${post.id}`} key={post.id}>
+              <div className={s.posts}>
+                <div className={s.posts__textContainer}>
+                  <div className={s.posts__header}>{post.title}</div>
+                  <div className={s.posts__text}>{post.description}</div>
+                  <div className={s.posts__dateContainer}>
+                    <div className={s.posts__date}></div>
+                    <div className={s.posts__iconContainer}>
+                      <div className={s.posts__number}></div>
+                      <VisibilityIcon className={s.posts__icon} />
+                    </div>
                   </div>
                 </div>
+                {/* <Image src={post.photoUrl} alt="img_post" className={s.posts__img}/> */}
               </div>
-              {/* <Image src={post.photoUrl} alt="img_post" className={s.posts__img}/> */}
-            </div>
+            </Link>
           ))}
         </>
       ) : (
-        <PostsSkeleton />
+        <>
+          <PostsSkeleton />
+          <PostsSkeleton />
+          <PostsSkeleton />
+          <PostsSkeleton />
+        </>
       )}
     </>
   );
