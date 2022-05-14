@@ -11,7 +11,7 @@ export const getPosts = () => async (dispatch: AppDispatch) => {
   }
 };
 
-export const getPost = (id: string) => async (dispatch: AppDispatch) => {
+export const getPost = (id: string | undefined) => async (dispatch: AppDispatch) => {
   try {
     const response = await axios.get<IPost>(`http://localhost:3050/post/${id}`);
     dispatch(postSlice.actions.postFetchingSuccess(response.data));

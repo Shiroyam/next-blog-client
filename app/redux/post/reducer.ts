@@ -47,14 +47,3 @@ export const postSlice = createSlice({
 });
 
 export default postSlice.reducer;
-
-// export const postsReducer = (state = initState, action: PostsAction) => {
-//   switch (action.type) {
-//     case "GET_POSTS":
-//       return { posts: action.payload };
-//     case "GET_POST":
-//       return { post: action.payload};
-//     default:
-//       return state;
-//   }
-// };
