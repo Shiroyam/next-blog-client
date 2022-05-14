@@ -1,5 +1,13 @@
-export interface IUser {
-  id: number;
+export interface IUserAuth {
+  id?: number;
+  fullName: string;
+  email: string;
+  password: string;
+  access_token: string;
+}
+
+export interface IUserReg {
+  id?: number;
   fullName: string;
   email: string;
   password: string;

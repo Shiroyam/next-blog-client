@@ -1,11 +1,11 @@
 import axios from "axios";
 import { AppDispatch } from "..";
-import { IUser } from "../types";
+import { IUserReg } from "../types";
 import { registrationSlice } from "./reducer";
 
-export const postUser = (userData: IUser) => async (dispatch: AppDispatch) => {
+export const postUser = (userData: IUserReg) => async (dispatch: AppDispatch) => {
   try {
-    const response = await axios.post("http://localhost:3050/user", {
+    const response = await axios.post<IUserReg>("http://localhost:3050/user", {
       fullName: userData.fullName,
       email: userData.email,
       password: userData.password,

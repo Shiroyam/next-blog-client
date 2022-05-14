@@ -1,26 +1,26 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IUserReg } from "../types";
+import { IUserAuth } from "../types";
 
 interface IState {
-  user: IUserReg;
+  user: IUserAuth;
   erorr: string;
 }
 
 const initialState: IState = {
   user: {
-    id: 0,
     fullName: "",
     email: "",
     password: "",
+    access_token: "",
   },
   erorr: "",
 };
 
-export const registrationSlice = createSlice({
-  name: "registration",
+export const authSlice = createSlice({
+  name: "auth",
   initialState,
   reducers: {
-    userFetchingSuccess(state: IState, action: PayloadAction<IUserReg>) {
+    userFetchingSuccess(state: IState, action: PayloadAction<IUserAuth>) {
       state.user = action.payload;
       state.erorr = "";
     },
@@ -30,4 +30,4 @@ export const registrationSlice = createSlice({
   },
 });
 
-export default registrationSlice.reducer;
+export default authSlice.reducer;
