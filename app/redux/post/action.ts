@@ -11,11 +11,35 @@ export const getPosts = () => async (dispatch: AppDispatch) => {
   }
 };
 
-export const getPost = (id: string | undefined) => async (dispatch: AppDispatch) => {
+export const getPost =
+  (id: string | undefined) => async (dispatch: AppDispatch) => {
+    try {
+      const response = await axios.get<IPost>(
+        `http://localhost:3050/post/${id}`
+      );
+      dispatch(postSlice.actions.postFetchingSuccess(response.data));
+    } catch (error) {
+      dispatch(postSlice.actions.postFetchingErorr("ошибка"));
+    }
+  };
+
+export const createPost = (postData: IPost) => async () => {
   try {
-    const response = await axios.get<IPost>(`http://localhost:3050/post/${id}`);
-    dispatch(postSlice.actions.postFetchingSuccess(response.data));
+    await axios.post(
+      "http://localhost:3050/post",
+      {
+        title: postData.title,
+        text: postData.text,
+        description: postData.description,
+        photoUrl: postData.photoUrl,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }
+    );
   } catch (error) {
-    dispatch(postSlice.actions.postFetchingErorr("ошибка"));
+    console.log(error);
   }
 };

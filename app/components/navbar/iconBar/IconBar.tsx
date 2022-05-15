@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import PersonIcon from "@mui/icons-material/Person";
 import CreateIcon from "@mui/icons-material/Create";
@@ -13,6 +13,14 @@ import { openModal } from "../../../redux/authorization/reducer";
 export const IconBar: FC = () => {
   const dispatch = useDispatch();
   const { user } = useTypesSelector((state) => state.authReducer);
+  const [flagNavbar, setFlagNavbar] = useState(false);
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      setFlagNavbar(true);
+    }
+  }, [user.access_token]);
+
   return (
     <>
       <div className={s.iconBar}>
@@ -22,7 +30,7 @@ export const IconBar: FC = () => {
             onClick={() => dispatch(openSearch())}
             className={s.iconBar__iconSearch}
           />
-          {user.access_token ? (
+          {flagNavbar ? (
             <>
               <Link href="/profile">
                 <PersonIcon className={s.iconBar__iconPerson} />

@@ -60,6 +60,14 @@
       .modal__inputEmail {
         margin-top: 39px;
         margin-bottom: 20px;
+        .modal__context{
+          font-style: normal;
+          font-weight: 600;
+          font-size: 13px;
+          line-height: 100%;
+          color: red;
+          position: absolute;
+        }
         .modal__headerEmail {
           padding-bottom: 8px;
           font-style: normal;
@@ -74,6 +82,14 @@
       }
       .modal__inputPassword {
         margin-bottom: 20px;
+        .modal__context{
+          font-style: normal;
+          font-weight: 600;
+          font-size: 13px;
+          line-height: 100%;
+          color: red;
+          position: absolute;
+        }
         .modal__headerPassword {
           padding-bottom: 8px;
           font-style: normal;
