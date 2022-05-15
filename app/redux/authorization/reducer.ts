@@ -4,6 +4,7 @@ import { IUserAuth } from "../types";
 interface IState {
   user: IUserAuth;
   erorr: string;
+  flagModal: boolean;
 }
 
 const initialState: IState = {
@@ -14,12 +15,19 @@ const initialState: IState = {
     access_token: "",
   },
   erorr: "",
+  flagModal: false,
 };
 
 export const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
+    openModal(state: IState){
+        state.flagModal = true;
+    },
+    closeModal(state: IState){
+        state.flagModal = false;
+    },
     userFetchingSuccess(state: IState, action: PayloadAction<IUserAuth>) {
       state.user = action.payload;
       state.erorr = "";
@@ -30,4 +38,5 @@ export const authSlice = createSlice({
   },
 });
 
+export const { closeModal, openModal } = authSlice.actions;
 export default authSlice.reducer;

@@ -4,10 +4,14 @@ import { Navbar } from "../app/components/navbar/Navbar";
 import s from "./../styles/main.module.scss";
 import Image from "next/image";
 import mainPng from "./../app/assets/main.png";
+import { Authorization } from "../app/components/modal/authorization/Authorization";
+import { useTypesSelector } from "../app/hooks/useTypeSelector";
 
 const Home: NextPage = () => {
+  const { flagModal } = useTypesSelector((state) => state.authReducer);
   return (
     <>
+      {flagModal && <Authorization />}
       <Navbar />
       <Menu />
       <div className={s.main}>
