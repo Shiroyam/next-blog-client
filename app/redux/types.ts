@@ -22,6 +22,7 @@ export interface IPost {
   userId: number;
 }
 export interface IComment {
+    id: string;
     text: string,
     post: IPost,
     user: IUserReg,

@@ -1,0 +1,143 @@
+@mixin textarea {
+  background: #ffffff;
+  border: 1px solid #eceef1;
+  box-sizing: border-box;
+  border-radius: 10px;
+  padding-top: 5px;
+  padding-right: 5px;
+  padding-left: 5px;
+  resize: none;
+  outline: none;
+}
+
+@mixin button {
+  width: 366px;
+  height: 49px;
+  left: 537px;
+  top: 610px;
+  background: #ffdf36;
+  border-radius: 12px;
+  cursor: pointer;
+  border: none;
+
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+  color: #68572d;
+}
+
+.post__commentsContainer {
+  padding: 40px 37px;
+  .comments {
+    margin-top: 10px;
+    width: 584px;
+    height: 120px;
+    border-bottom: 1px solid #f1f1f1;
+  
+    .comments__header {
+      display: flex;
+      justify-content: space-between;
+  
+      .comments__fullName {
+        font-style: normal;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 18px;
+        color: #373737;
+      }
+  
+      .comments__date {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 0.01em;
+        text-transform: uppercase;
+  
+        color: #c1c1c1;
+      }
+    }
+  
+    .comments__text {
+      width: 584px;
+      padding-top: 9px;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 22px;
+      color: #373737;
+      padding-bottom: 5px;
+    }
+  }
+  .post__commentsHeader {
+    margin-bottom: 37px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 24px;
+    color: #0a3465;
+  }
+  .post__comment {
+    margin-top: 10px;
+    width: 584px;
+    height: 99px;
+    border-bottom: 1px solid #f1f1f1;
+    .post__commentHeader {
+      display: flex;
+      justify-content: space-between;
+      .post__commentFullName {
+        font-style: normal;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 18px;
+        color: #373737;
+      }
+      .post__commentDate {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 0.01em;
+        text-transform: uppercase;
+        font-feature-settings: "tnum" on, "lnum" on;
+        color: #c1c1c1;
+      }
+    }
+  }
+  .post__commentText {
+    padding-top: 9px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    color: #373737;
+  }
+}
+.post__commentsInputContainer {
+  width: 602px;
+  .post__commentsInputHeader {
+    margin-bottom: 9px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    color: #0a3465;
+  }
+  .post__commentsInput {
+    @include textarea;
+
+    margin-bottom: 22px;
+    width: 602px;
+    height: 90px;
+  }
+  .post__commentsButton {
+    @include button;
+
+    margin-bottom: 10px;
+    float: right;
+    width: 130px;
+    height: 45px;
+  }
+}

@@ -2,16 +2,19 @@ import type { NextPage } from "next";
 import s from "../../styles/post.module.scss";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import { PostSkeleton } from "../../app/components/skeleton/postSkeleton/PostSkeleton";
+import { Comments } from "../../app/components/comments/comments";
 import { useEffect } from "react";
 import { useTypesSelector } from "../../app/hooks/useTypeSelector";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 import { getPost } from "../../app/redux/post/action";
+import { useForm } from "react-hook-form";
 
 const Post: NextPage = () => {
   const router = useRouter();
   const { id } = router.query;
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(getPost(id));
   }, [id]);
@@ -38,6 +41,7 @@ const Post: NextPage = () => {
               <div className={s.post__textContainer}>
                 <div className={s.post__text}>{post.text}</div>
               </div>
+              <Comments />
             </div>
           </>
         ) : (

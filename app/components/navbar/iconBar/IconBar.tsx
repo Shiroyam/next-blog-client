@@ -14,6 +14,7 @@ export const IconBar: FC = () => {
   const dispatch = useDispatch();
   const { user } = useTypesSelector((state) => state.authReducer);
   const [flagNavbar, setFlagNavbar] = useState(false);
+  
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {

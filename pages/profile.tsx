@@ -1,4 +1,3 @@
-import { Skeleton } from "@mui/material";
 import { NextPage } from "next";
 import { PostsSkeleton } from "../app/components/skeleton/postsSkeleton/PostsSleleton";
 import { Menu } from "../app/components/menu/Menu";
