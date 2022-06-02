@@ -5,7 +5,6 @@ import { PostsSkeleton } from "../../skeleton/postsSkeleton/PostsSleleton";
 import { useDispatch } from "react-redux";
 import { useTypesSelector } from "../../../hooks/useTypeSelector";
 import { getPosts } from "../../../redux/post/action";
-import Image from "next/image";
 import Link from "next/link";
 
 export const Posts: FC = () => {
@@ -14,12 +13,13 @@ export const Posts: FC = () => {
     dispatch(getPosts());
   }, []);
   const { posts, isLoading } = useTypesSelector((state) => state.postReducer);
+  console.log(posts)
   return (
     <>
       {isLoading ? (
         <>
-          {posts.map((post: any) => (
-            <Link href={`/post/${post.id}`} key={post.id}>
+          {posts.items.map((post: any) => (
+            <Link href={`/post/${post._id}`} key={post._id}>
               <div className={s.posts}>
                 <div className={s.posts__textContainer}>
                   <div className={s.posts__header}>{post.title}</div>
@@ -32,7 +32,7 @@ export const Posts: FC = () => {
                     </div>
                   </div>
                 </div>
-                {/* <Image src={post.photoUrl} alt="img_post" className={s.posts__img}/> */}
+                <img src={post.photoUrl} width={160} height={140} alt="img_post" className={s.posts__img}/>
               </div>
             </Link>
           ))}

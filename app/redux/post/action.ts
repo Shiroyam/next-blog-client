@@ -4,7 +4,7 @@ import { IPost } from "../types";
 import { postSlice } from "./reducer";
 export const getPosts = () => async (dispatch: AppDispatch) => {
   try {
-    const response = await axios.get<IPost[]>("http://localhost:3050/post");
+    const response = await axios.get<IPost[]>("https://semyon-blog.herokuapp.com/posts?limit=4&page=1");
     dispatch(postSlice.actions.postsFetchingSuccess(response.data));
   } catch (error) {
     dispatch(postSlice.actions.postsFetchingErorr("ошибка"));
@@ -15,7 +15,7 @@ export const getPost =
   (id: string | undefined) => async (dispatch: AppDispatch) => {
     try {
       const response = await axios.get<IPost>(
-        `http://localhost:3050/post/${id}`
+        `https://semyon-blog.herokuapp.com/posts/${id}`
       );
       dispatch(postSlice.actions.postFetchingSuccess(response.data));
     } catch (error) {

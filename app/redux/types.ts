@@ -3,7 +3,7 @@ export interface IUserAuth {
   fullName: string;
   email: string;
   password: string;
-  access_token: string;
+  token: string;
 }
 
 export interface IUserReg {

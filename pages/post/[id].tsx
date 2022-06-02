@@ -25,7 +25,7 @@ const Post: NextPage = () => {
         {isLoading ? (
           <>
             <div className={s.post}>
-              <div className={s.post__headerContaider}>
+              <div style={{ backgroundImage: `url(${post.photoUrl})` }} className={s.post__headerContaider}>
                 <div className={s.post__dateContainer}>
                   <div className={s.post__date}></div>
                   <div className={s.post__iconContainer}>

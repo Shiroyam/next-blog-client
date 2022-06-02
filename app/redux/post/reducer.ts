@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IPost } from "./../types";
 interface IState {
-  posts: IPost[];
+  posts: any;
   post: IPost;
   isLoading: boolean;
   error: string;

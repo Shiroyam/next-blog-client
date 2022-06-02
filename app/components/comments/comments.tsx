@@ -30,11 +30,10 @@ export const Comments: FC = () => {
 
   return (
     <div className={s.post__commentsContainer}>
-      <div className={s.post__commentsHeader}>
+      {/* <div className={s.post__commentsHeader}>
         Комментарии({comment.length ? comment.length : 0})
       </div>
       {comment
-        .filter((comments) => comments.post.id == id)
         .map((comments) => (
           <div key={comments.id} className={s.comments}>
             <div className={s.comments__header}>
@@ -65,7 +64,7 @@ export const Comments: FC = () => {
             Отправить
           </button>
         </form>
-      </div>
+      </div> */}
     </div>
   );
 };

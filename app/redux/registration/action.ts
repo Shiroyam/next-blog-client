@@ -5,7 +5,7 @@ import { registrationSlice } from "./reducer";
 
 export const postUser = (userData: IUserReg) => async (dispatch: AppDispatch) => {
   try {
-    const response = await axios.post<IUserReg>("http://localhost:3050/user", {
+    const response = await axios.post<IUserReg>("https://semyon-blog.herokuapp.com/auth/register", {
       fullName: userData.fullName,
       email: userData.email,
       password: userData.password,

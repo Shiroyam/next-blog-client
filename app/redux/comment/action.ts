@@ -6,7 +6,7 @@ import { commentSlice } from "./reducer";
 export const getComments = () => async (dispatch: AppDispatch) => {
   try {
     const response = await axios.get<IComment[]>(
-      "http://localhost:3050/comment/"
+      "https://semyon-blog.herokuapp.com/comments"
     );
     dispatch(commentSlice.actions.commentFetchingSuccess(response.data));
   } catch (error: any) {
