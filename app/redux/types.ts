@@ -19,7 +19,7 @@ export interface IPost {
   description: string;
   photoUrl: string;
   text: string;
-  userId: number;
+  _Id: number;
 }
 export interface IComment {
     id: string;

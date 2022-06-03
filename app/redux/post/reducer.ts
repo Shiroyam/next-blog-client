@@ -15,7 +15,7 @@ const initialState: IState = {
     description: "",
     photoUrl: "",
     text: "",
-    userId: 0,
+    _Id: 0,
   },
   isLoading: false,
   error: "",

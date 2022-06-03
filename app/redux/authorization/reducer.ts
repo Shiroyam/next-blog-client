@@ -12,7 +12,7 @@ const initialState: IState = {
     fullName: "",
     email: "",
     password: "",
-    access_token: "",
+    token: "",
   },
   erorr: "",
   flagModal: false,
