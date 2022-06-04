@@ -8,6 +8,7 @@ import { useTypesSelector } from "../../app/hooks/useTypeSelector";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 import { getPost } from "../../app/redux/post/action";
+import { getComments } from "../../app/redux/comment/action";
 import { useForm } from "react-hook-form";
 
 const Post: NextPage = () => {
@@ -17,6 +18,7 @@ const Post: NextPage = () => {
 
   useEffect(() => {
     dispatch(getPost(id));
+    dispatch(getComments());
   }, [id]);
   const { post, isLoading } = useTypesSelector((state) => state.postReducer);
   return (
@@ -27,10 +29,10 @@ const Post: NextPage = () => {
             <div className={s.post}>
               <div style={{ backgroundImage: `url(${post.photoUrl})` }} className={s.post__headerContaider}>
                 <div className={s.post__dateContainer}>
-                  <div className={s.post__date}></div>
+                  <div className={s.post__date}>{post.createdAt}</div>
                   <div className={s.post__iconContainer}>
                     <VisibilityIcon className={s.post__icon} />
-                    <div className={s.post__number}></div>
+                    <div className={s.post__number}>{post.views}</div>
                   </div>
                 </div>
                 <div className={s.post__headerText}>

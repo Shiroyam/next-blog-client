@@ -1,40 +1,63 @@
 .post {
+  width: 720px;
+  .post__headerContaider {
     width: 720px;
-    .post__headerContaider {
-      width: 720px;
-      height: 452px;
-      background: #FAFAFA;
-      padding: 129px 70px;
+    height: 452px;
+    background: #fafafa;
+    padding: 129px 70px;
+    position: relative;
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+    .post__dateContainer {
       position: relative;
-      .post__dateContainer {
-        position: relative;
-        z-index: 1;
-        padding-bottom: 9px;
+      z-index: 1;
+      padding-bottom: 9px;
+      display: flex;
+      position: relative;
+      color: #c1c1c1;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 18px;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      .post__iconContainer {
         display: flex;
-        position: relative;
-        .post__iconContainer {
-          display: flex;
-          color: #c1c1c1; 
-          .post__icon {
-            height: 25px;
-          }
-        }
-      }
-      .post__headerText {
-        position: relative;
-        z-index: 1;
-        .post__header {
-          padding-bottom: 14px;
-          max-width: 600px;
-        }
-        .post__description {
-          max-width: 590px;
+        .post__icon {
+          height: 25px;
         }
       }
     }
-    .post__textContainer {
-      padding: 72px 70px;
-      max-width: 584px;
-    } 
+    .post__headerText {
+      position: relative;
+      z-index: 1;
+      .post__header {
+        padding-bottom: 14px;
+        max-width: 600px;
+        color: #ffffff;
+        font-weight: 800;
+        font-size: 42px;
+        line-height: 52px;
+      }
+      .post__description {
+        max-width: 590px;
+        color: #c1c1c1;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
+      }
+    }
   }
-  
+  .post__textContainer {
+    padding: 72px 70px;
+    max-width: 750px;
+    color: #000000;
+  }
+}

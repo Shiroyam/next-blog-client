@@ -13,7 +13,6 @@ export const Posts: FC = () => {
     dispatch(getPosts());
   }, []);
   const { posts, isLoading } = useTypesSelector((state) => state.postReducer);
-  console.log(posts)
   return (
     <>
       {isLoading ? (
@@ -25,9 +24,9 @@ export const Posts: FC = () => {
                   <div className={s.posts__header}>{post.title}</div>
                   <div className={s.posts__text}>{post.description}</div>
                   <div className={s.posts__dateContainer}>
-                    <div className={s.posts__date}></div>
+                    <div className={s.posts__date}>{post.createdAt}</div>
                     <div className={s.posts__iconContainer}>
-                      <div className={s.posts__number}></div>
+                      <div className={s.posts__number}>{post.views}</div>
                       <VisibilityIcon className={s.posts__icon} />
                     </div>
                   </div>

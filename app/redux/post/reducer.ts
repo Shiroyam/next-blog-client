@@ -10,11 +10,12 @@ interface IState {
 const initialState: IState = {
   posts: [],
   post: {
-    id: 0,
     title: "",
     description: "",
     photoUrl: "",
     text: "",
+    views: 0,
+    createdAt: "",
     _Id: 0,
   },
   isLoading: false,

@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { FC, useEffect } from "react";
+import { FC, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { useTypesSelector } from "../../hooks/useTypeSelector";
@@ -10,11 +10,7 @@ export const Comments: FC = () => {
   const router = useRouter();
   const { id } = router.query;
 
-  const dispatch = useDispatch();
   const { comment } = useTypesSelector((state) => state.commentReducer);
-  useEffect(() => {
-    dispatch(getComments());
-  }, []);
 
   const {
     register,
@@ -30,21 +26,22 @@ export const Comments: FC = () => {
 
   return (
     <div className={s.post__commentsContainer}>
-      {/* <div className={s.post__commentsHeader}>
-        Комментарии({comment.length ? comment.length : 0})
+      <div className={s.post__commentsHeader}>
+        Комментарии({comment.items ? comment.items.length : 0})
       </div>
-      {comment
-        .map((comments) => (
-          <div key={comments.id} className={s.comments}>
-            <div className={s.comments__header}>
-              <div className={s.comments__fullName}>
-                {comments.user.fullName}
-              </div>
-              <div className={s.comments__date}></div>
+      {comment.items?.map((comments: any) => (
+        <div key={comments._id} className={s.comments}>
+          <div className={s.comments__header}>
+            <div className={s.comments__fullName}>{comments.user.fullName}</div>
+            <div className={s.comments__date}>
+              {" "}
+              {comments.user.createdAt.slice(0, 10)} в{" "}
+              {comments.user.createdAt.slice(11, 19)}
             </div>
-            <div className={s.comments__text}>{comments.text}</div>
           </div>
-        ))}
+          <div className={s.comments__text}>{comments.text}</div>
+        </div>
+      ))}
       <div className={s.post__commentsInputContainer}>
         <div className={s.post__commentsInputHeader}>Добавить комментарий</div>
         <form onSubmit={handleSubmit(onClickSubmit)}>
@@ -64,7 +61,7 @@ export const Comments: FC = () => {
             Отправить
           </button>
         </form>
-      </div> */}
+      </div>
     </div>
   );
 };

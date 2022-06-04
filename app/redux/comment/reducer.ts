@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IComment } from "../types";
 
 interface IState {
-  comment: IComment[];
+  comment: any;
   error: string;
 }
 

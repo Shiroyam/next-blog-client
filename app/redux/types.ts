@@ -14,16 +14,17 @@ export interface IUserReg {
 }
 
 export interface IPost {
-  id: number;
+  views: number;
   title: string;
   description: string;
   photoUrl: string;
   text: string;
+  createdAt: string;
   _Id: number;
 }
 export interface IComment {
     id: string;
-    text: string,
-    post: IPost,
-    user: IUserReg,
+    text: string;
+    post: IPost;
+    user: IUserReg;
 }
