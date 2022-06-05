@@ -3,6 +3,7 @@ import s from "./navbar.module.scss";
 import { Posts } from "./posts/Posts";
 import { Search } from "./search/Search";
 import { IconBar } from "./iconBar/IconBar"
+import { Pogination } from "../pogination/Pogination";
 
 export const Navbar: FC = () => {
   return (
@@ -10,6 +11,7 @@ export const Navbar: FC = () => {
       <Search /> 
       <IconBar></IconBar>
       <Posts></Posts>
+      <Pogination></Pogination>
     </nav>
   );
 };

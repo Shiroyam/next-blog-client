@@ -10,7 +10,7 @@ import Link from "next/link";
 export const Posts: FC = () => {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getPosts());
+    dispatch(getPosts(1));
   }, []);
   const { posts, isLoading } = useTypesSelector((state) => state.postReducer);
   return (
