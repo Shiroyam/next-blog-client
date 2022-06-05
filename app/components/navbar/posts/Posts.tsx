@@ -6,18 +6,29 @@ import { useDispatch } from "react-redux";
 import { useTypesSelector } from "../../../hooks/useTypeSelector";
 import { getPosts } from "../../../redux/post/action";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 export const Posts: FC = () => {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getPosts(1));
+    dispatch(getPosts());
   }, []);
-  const { posts, isLoading } = useTypesSelector((state) => state.postReducer);
+  const { posts, isLoading, filterPosts } = useTypesSelector((state) => state.postReducer);
+
+  const router = useRouter();
+  // if(router.pathname === "/profile"){
+  //   var filterPosts = posts.items?.filter((post: any) => post.user._id === localStorage.getItem("id"))
+  // } else {
+  //   var filterPosts = posts.items
+  // }
+  
+  // console.log(router.pathname)
   return (
     <>
       {isLoading ? (
         <>
-          {posts.items.map((post: any) => (
+          {(router.pathname === "/profile" ? filterPosts : posts)
+          .map((post: any) => (
             <Link href={`/post/${post._id}`} key={post._id}>
               <div className={s.posts}>
                 <div className={s.posts__textContainer}>

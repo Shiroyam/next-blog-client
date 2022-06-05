@@ -2,7 +2,8 @@ import axios from "axios";
 import { AppDispatch } from "..";
 import { IPost } from "../types";
 import { postSlice } from "./reducer";
-export const getPosts = (page: number) => async (dispatch: AppDispatch) => {
+
+export const getPosts = (page?: number) => async (dispatch: AppDispatch) => {
   try {
     const response = await axios.get<IPost[]>(`https://semyon-blog.herokuapp.com/posts?limit=4&page=${page}`);
     dispatch(postSlice.actions.postsFetchingSuccess(response.data));

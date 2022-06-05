@@ -9,6 +9,7 @@ interface IState {
 
 const initialState: IState = {
   user: {
+    _id: "",
     fullName: "",
     email: "",
     password: "",

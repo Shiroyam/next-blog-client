@@ -1,5 +1,5 @@
 export interface IUserAuth {
-  id?: number;
+  _id: string ;
   fullName: string;
   email: string;
   password: string;
@@ -7,7 +7,7 @@ export interface IUserAuth {
 }
 
 export interface IUserReg {
-  id?: number;
+  _id: string ;
   fullName: string;
   email: string;
   password: string;
@@ -21,6 +21,8 @@ export interface IPost {
   text: string;
   createdAt: string;
   _Id: number;
+  items: any;
+  total: number;
 }
 export interface IComment {
     id: string;

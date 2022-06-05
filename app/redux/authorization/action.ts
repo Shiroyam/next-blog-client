@@ -13,7 +13,8 @@ export const postUser =
           email: userData.email,
         }
       );
-      const { token } = response.data;
+      const { token, _id } = response.data;
+      localStorage.setItem("id", _id)
       localStorage.setItem("token", token);
       dispatch(authSlice.actions.userFetchingSuccess(response.data));
     } catch (error: any) {

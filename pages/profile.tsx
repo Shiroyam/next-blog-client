@@ -1,7 +1,9 @@
 import { NextPage } from "next";
-import { PostsSkeleton } from "../app/components/skeleton/postsSkeleton/PostsSleleton";
+import CircularProgress from '@mui/material/CircularProgress';
 import { Menu } from "../app/components/menu/Menu";
 import s from "../styles/profile.module.scss"
+import { useRouter } from "next/router";
+import { Posts } from "../app/components/navbar/posts/Posts";
 
 const Profile: NextPage = () => {
   return (
@@ -34,7 +36,9 @@ const Profile: NextPage = () => {
               Комментарии
             </div>
           </div>
-         <PostsSkeleton /> 
+          <div className={s.profile__content}>
+            <Posts />
+          </div>
         </div>
       </div>
     </>

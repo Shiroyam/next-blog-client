@@ -9,9 +9,9 @@ export const Navbar: FC = () => {
   return (
     <nav className={s.navbar}>
       <Search /> 
-      <IconBar></IconBar>
-      <Posts></Posts>
-      <Pogination></Pogination>
+      <IconBar />
+      <Posts />
+      <Pogination />
     </nav>
   );
 };

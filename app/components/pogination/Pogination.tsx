@@ -8,8 +8,9 @@ import { getPosts } from "../../redux/post/action";
 
 export const Pogination: FC = () => {
     const dispatch = useDispatch();
-    const {posts} = useTypesSelector(state => state.postReducer)
-    const page = Math.ceil(posts.total / 4);
+    const {total} = useTypesSelector(state => state.postReducer)
+    const page = Math.ceil(total / 4);
+    console.log(total)
   return (
     <div className={s.pogination}>
       <Pagination onChange={(_, num)=> dispatch(getPosts(num))} count={page} size="small"/>
