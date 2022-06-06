@@ -2,7 +2,7 @@ import type { NextPage } from "next";
 import s from "../../styles/post.module.scss";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import { PostSkeleton } from "../../app/components/skeleton/postSkeleton/PostSkeleton";
-import { Comments } from "../../app/components/comments/comments";
+import { LayoutComments } from "../../app/components/layoutComments/LayoutComments";
 import { useEffect } from "react";
 import { useTypesSelector } from "../../app/hooks/useTypeSelector";
 import { useDispatch } from "react-redux";
@@ -20,6 +20,7 @@ const Post: NextPage = () => {
     dispatch(getPost(id));
     dispatch(getComments());
   }, [id]);
+  
   const { post, isLoading } = useTypesSelector((state) => state.postReducer);
   return (
     <>
@@ -43,7 +44,7 @@ const Post: NextPage = () => {
               <div className={s.post__textContainer}>
                 <div className={s.post__text}>{post.text}</div>
               </div>
-              <Comments />
+              <LayoutComments />
             </div>
           </>
         ) : (

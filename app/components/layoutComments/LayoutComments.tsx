@@ -5,8 +5,9 @@ import { useDispatch } from "react-redux";
 import { useTypesSelector } from "../../hooks/useTypeSelector";
 import { getComments } from "../../redux/comment/action";
 import s from "./comments.module.scss";
+import { Comments } from "./comments/comments";
 
-export const Comments: FC = () => {
+export const LayoutComments: FC = () => {
   const router = useRouter();
   const { id } = router.query;
 
@@ -29,19 +30,7 @@ export const Comments: FC = () => {
       <div className={s.post__commentsHeader}>
         Комментарии({comment.items ? comment.items.length : 0})
       </div>
-      {comment.items?.map((comments: any) => (
-        <div key={comments._id} className={s.comments}>
-          <div className={s.comments__header}>
-            <div className={s.comments__fullName}>{comments.user.fullName}</div>
-            <div className={s.comments__date}>
-              {" "}
-              {comments.user.createdAt.slice(0, 10)} в{" "}
-              {comments.user.createdAt.slice(11, 19)}
-            </div>
-          </div>
-          <div className={s.comments__text}>{comments.text}</div>
-        </div>
-      ))}
+      <Comments></Comments>
       <div className={s.post__commentsInputContainer}>
         <div className={s.post__commentsInputHeader}>Добавить комментарий</div>
         <form onSubmit={handleSubmit(onClickSubmit)}>
