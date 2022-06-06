@@ -5,6 +5,7 @@ import postReducer from "./post/reducer";
 import registrationReducer from "./registration/reducer";
 import authReducer from "./authorization/reducer";
 import commentReducer from "./comment/reducer";
+import profileReducer from "./profile/reducer"
 
 
 const rootReducer = combineReducers({
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   registrationReducer,
   authReducer,
   commentReducer,
+  profileReducer
 });
 
 export const storeSetup = () => {
