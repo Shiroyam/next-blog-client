@@ -16,13 +16,6 @@ export const Posts: FC = () => {
   const { posts, isLoading, filterPosts } = useTypesSelector((state) => state.postReducer);
 
   const router = useRouter();
-  // if(router.pathname === "/profile"){
-  //   var filterPosts = posts.items?.filter((post: any) => post.user._id === localStorage.getItem("id"))
-  // } else {
-  //   var filterPosts = posts.items
-  // }
-  
-  // console.log(router.pathname)
   return (
     <>
       {isLoading ? (

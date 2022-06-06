@@ -1,9 +1,16 @@
-import { FC } from "react";
+import { FC, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { useTypesSelector } from "../../../hooks/useTypeSelector";
+import { getComments } from "../../../redux/comment/action";
 import s from "./comments.module.scss";
 
 export const Comments: FC = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getComments());
+  }, []);
   const { comment } = useTypesSelector((state) => state.commentReducer);
+
   return (
     <>
       {comment.items?.map((comments: any) => (

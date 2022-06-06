@@ -1,17 +1,15 @@
 import { NextPage } from "next";
-import CircularProgress from "@mui/material/CircularProgress";
 import { Menu } from "../app/components/menu/Menu";
 import s from "../styles/profile.module.scss";
-import { useRouter } from "next/router";
 import { Posts } from "../app/components/navbar/posts/Posts";
 import { useTypesSelector } from "../app/hooks/useTypeSelector";
 import { useDispatch } from "react-redux";
 import { openComments, openPost } from "../app/redux/profile/reducer";
+import { Comments } from "../app/components/layoutComments/comments/comments";
 
 const Profile: NextPage = () => {
   const dispatch = useDispatch();
   const { flagToggle } = useTypesSelector((state) => state.profileReducer);
-
   return (
     <>
       <Menu />
@@ -43,7 +41,7 @@ const Profile: NextPage = () => {
             </div>
           </div>
           <div className={s.profile__content}>
-            {flagToggle ? <Posts /> : <div>Comments</div>}
+            {flagToggle ? <Posts /> : <Comments />}
           </div>
         </div>
       </div>
