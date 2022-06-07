@@ -11,7 +11,7 @@ export const LayoutComments: FC = () => {
   const router = useRouter();
   const { id } = router.query;
 
-  const { comment } = useTypesSelector((state) => state.commentReducer);
+  const { commentId } = useTypesSelector((state) => state.commentReducer);
 
   const {
     register,
@@ -28,7 +28,7 @@ export const LayoutComments: FC = () => {
   return (
     <div className={s.post__commentsContainer}>
       <div className={s.post__commentsHeader}>
-        Комментарии({comment.items ? comment.items.length : 0})
+        Комментарии({commentId ? commentId.length : 0})
       </div>
       <Comments></Comments>
       <div className={s.post__commentsInputContainer}>

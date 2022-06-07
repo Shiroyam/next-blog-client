@@ -3,11 +3,13 @@ import { IComment } from "../types";
 
 interface IState {
   comment: any;
+  commentId: any;
   error: string;
 }
 
 const initialState: IState = {
   comment: [],
+  commentId: [],
   error: "",
 };
 
@@ -20,6 +22,12 @@ export const commentSlice = createSlice({
       state.error = "";
     },
     commentFetchingError(state: IState, action: PayloadAction<string>) {
+      state.error = action.payload;
+    },
+    commentIdFetchingSuccess(state: IState, action: PayloadAction<IComment[]>){
+      state.commentId = action.payload
+    },
+    commentIdFetchingError(state: IState, action: PayloadAction<string>) {
       state.error = action.payload;
     },
   },

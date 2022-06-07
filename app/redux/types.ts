@@ -29,4 +29,5 @@ export interface IComment {
     text: string;
     post: IPost;
     user: IUserReg;
+    items: any;
 }

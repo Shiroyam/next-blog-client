@@ -8,8 +8,8 @@ import { useTypesSelector } from "../../app/hooks/useTypeSelector";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 import { getPost } from "../../app/redux/post/action";
-import { getComments } from "../../app/redux/comment/action";
-import { useForm } from "react-hook-form";
+import { getCommentsPost } from "../../app/redux/comment/action";
+
 
 const Post: NextPage = () => {
   const router = useRouter();
@@ -17,8 +17,8 @@ const Post: NextPage = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(getCommentsPost(id));
     dispatch(getPost(id));
-    dispatch(getComments());
   }, [id]);
   
   const { post, isLoading } = useTypesSelector((state) => state.postReducer);

@@ -6,9 +6,14 @@ import { useTypesSelector } from "../app/hooks/useTypeSelector";
 import { useDispatch } from "react-redux";
 import { openComments, openPost } from "../app/redux/profile/reducer";
 import { Comments } from "../app/components/layoutComments/comments/comments";
+import { useEffect } from "react";
+import { getComments } from "../app/redux/comment/action";
 
 const Profile: NextPage = () => {
   const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getComments());
+  }, []);
   const { flagToggle } = useTypesSelector((state) => state.profileReducer);
   return (
     <>
