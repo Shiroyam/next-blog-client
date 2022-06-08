@@ -9,6 +9,8 @@ import { useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 import { getPost } from "../../app/redux/post/action";
 import { getCommentsPost } from "../../app/redux/comment/action";
+import { Navbar } from "../../app/components/navbar/Navbar";
+import { Menu } from "../../app/components/menu/Menu";
 
 
 const Post: NextPage = () => {
@@ -24,6 +26,8 @@ const Post: NextPage = () => {
   const { post, isLoading } = useTypesSelector((state) => state.postReducer);
   return (
     <>
+    <Menu />
+    <Navbar />
       <div className={s.post}>
         {isLoading ? (
           <>

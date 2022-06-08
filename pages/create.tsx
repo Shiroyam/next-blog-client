@@ -1,6 +1,8 @@
 import { FC } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
+import { Menu } from "../app/components/menu/Menu";
+import { Navbar } from "../app/components/navbar/Navbar";
 import { createPost } from "../app/redux/post/action";
 import s from "./../styles/create.module.scss";
 
@@ -22,6 +24,8 @@ const Create: FC = () => {
 
   return (
     <>
+      <Menu />
+      <Navbar />
       <div className={s.create}>
         <form onSubmit={handleSubmit(onSubmitHandlear)}>
           <div className={s.create__headerContainer}>

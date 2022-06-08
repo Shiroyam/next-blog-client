@@ -6,6 +6,7 @@ import registrationReducer from "./registration/reducer";
 import authReducer from "./authorization/reducer";
 import commentReducer from "./comment/reducer";
 import profileReducer from "./profile/reducer"
+import poginationReducer from "./pogination/reducer"
 
 
 const rootReducer = combineReducers({
@@ -15,7 +16,8 @@ const rootReducer = combineReducers({
   registrationReducer,
   authReducer,
   commentReducer,
-  profileReducer
+  profileReducer,
+  poginationReducer,
 });
 
 export const storeSetup = () => {

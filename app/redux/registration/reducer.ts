@@ -8,7 +8,7 @@ interface IState {
 
 const initialState: IState = {
   user: {
-    id: 0,
+    _id: "",
     fullName: "",
     email: "",
     password: "",

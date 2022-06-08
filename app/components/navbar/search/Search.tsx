@@ -1,12 +1,13 @@
-import { FC } from "react";
+import { FC} from "react";
 import s from "./search.module.scss";
 import CloseIcon from "@mui/icons-material/Close";
 import { useAppDispatch, useTypesSelector } from "../../../hooks/useTypeSelector";
-import { closeSearch } from "../../../redux/search/reducer";
+import { closeSearch, setValue } from "../../../redux/search/reducer";
+
 
 export const Search: FC = () => {
   const dispatch = useAppDispatch();
-  const { flagSearch } = useTypesSelector((state) => state.searchReducer);
+  const { flagSearch} = useTypesSelector((state) => state.searchReducer);
   return (
     <>
       {flagSearch && (
@@ -14,6 +15,8 @@ export const Search: FC = () => {
           <input
             placeholder="Поиск статьи по заголовку или тексту..."
             className={s.search__input}
+            
+            onChange={(e) => dispatch(setValue(e.target.value))}
           ></input>
           <CloseIcon
             onClick={() => dispatch(closeSearch())}
