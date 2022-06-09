@@ -11,7 +11,6 @@ const Create: FC = () => {
 
   const onSubmitHandlear = (data: any) => {
     dispatch(createPost(data));
-    window.location.reload();
   };
 
   const {

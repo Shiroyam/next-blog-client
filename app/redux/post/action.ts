@@ -27,7 +27,7 @@ export const getPost =
 export const createPost = (postData: IPost) => async () => {
   try {
     await axios.post(
-      "http://localhost:3050/post",
+      "https://semyon-blog.herokuapp.com/posts",
       {
         title: postData.title,
         text: postData.text,
@@ -36,7 +36,7 @@ export const createPost = (postData: IPost) => async () => {
       },
       {
         headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          Authorization: `${localStorage.getItem("token")}`,
         },
       }
     );
