@@ -3,12 +3,13 @@ import { FC, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { useTypesSelector } from "../../hooks/useTypeSelector";
-import { getComments } from "../../redux/comment/action";
+import { getComments, postComment } from "../../redux/comment/action";
 import s from "./comments.module.scss";
 import { Comments } from "./comments/comments";
 
 export const LayoutComments: FC = () => {
   const router = useRouter();
+  const dispatch = useDispatch();
   const { id } = router.query;
 
   const { commentId } = useTypesSelector((state) => state.commentReducer);
@@ -22,7 +23,7 @@ export const LayoutComments: FC = () => {
   });
 
   const onClickSubmit = (data: any) => {
-    window.location.reload();
+    dispatch(postComment(id, data.comment))
   };
 
   return (
@@ -40,10 +41,14 @@ export const LayoutComments: FC = () => {
                 value: 50,
                 message: "Можно ввести максимум 50 символа!",
               },
+              minLength: {
+                value: 3,
+                message: "Нужно ввести 3 символа!"
+              }
             })}
             className={s.post__commentsInput}
           ></textarea>
-          <div className={s.modal__context}>
+          <div className={s.post__context}>
             {errors?.comment && <p>{errors?.comment?.message || "Error!"}</p>}
           </div>
           <button type="submit" className={s.post__commentsButton}>

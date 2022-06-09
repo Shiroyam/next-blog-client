@@ -7,6 +7,12 @@ import { useAppDispatch } from "../../../hooks/useTypeSelector";
 
 export const MenuActive: FC = () => {
   const dispatch = useAppDispatch();
+
+  const onClickExit = () => {
+    localStorage.clear();
+    document.location.reload();
+  };
+
   const onClickBackground = (e: any) => {
     e.stopPropagation();
   };
@@ -28,7 +34,7 @@ export const MenuActive: FC = () => {
                 <Link href="/create">
                   <a className={s.menuActive__route}>Создать запись</a>
                 </Link>
-                <div className={s.menuActive__route}>Выйти</div>
+                <div onClick={onClickExit} className={s.menuActive__route}>Выйти</div>
               </>
             ) : (
               <>
@@ -36,7 +42,9 @@ export const MenuActive: FC = () => {
                   Главная
                 </Link>
                 <div className={s.menuActive__route}>Зарегистрироваться</div>
-                <div className={s.menuActive__route}>Войти</div>
+                <div className={s.menuActive__route}>
+                  Войти
+                </div>
               </>
             )}
           </div>

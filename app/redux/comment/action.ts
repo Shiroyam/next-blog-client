@@ -24,3 +24,20 @@ export const getCommentsPost = (id: string | undefined) => async (dispatch: AppD
     dispatch(commentSlice.actions.commentIdFetchingError(error.message));
   }
 };
+
+export const postComment = (id: string, text: string) => async (dispatch: AppDispatch) => {
+  try {
+    await axios.post( "https://semyon-blog.herokuapp.com/comments",
+    {
+      text: `${text}`,
+      postId: `${id}`,
+    },
+    {
+      headers: {
+        Authorization: `${localStorage.getItem("token")}`,
+      },
+    })
+  } catch (error) {
+    console.log(error)
+  }
+}
