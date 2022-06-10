@@ -20,8 +20,8 @@ export const Posts: FC = () => {
   const { posts, isLoading, filterPosts } = useTypesSelector(
     (state) => state.postReducer
   );
-
   const router = useRouter();
+
   return (
     <>
       {isLoading ? (
@@ -29,7 +29,13 @@ export const Posts: FC = () => {
           {(router.pathname === "/profile" ? filterPosts : posts).map(
             (post: any) => (
               <Link href={`/post/${post._id}`} key={post._id}>
-                <div className={s.posts}>
+                <div
+                  className={
+                    router.query.id === post._id
+                      ? `${s.posts} ${s.active}`
+                      : s.posts
+                  }
+                >
                   <div className={s.posts__textContainer}>
                     <div className={s.posts__header}>{post.title}</div>
                     <div className={s.posts__text}>{post.description}</div>
