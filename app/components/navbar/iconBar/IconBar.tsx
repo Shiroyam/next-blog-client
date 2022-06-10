@@ -8,7 +8,7 @@ import { useDispatch } from "react-redux";
 import { openSearch } from "../../../redux/search/reducer";
 import Link from "next/link";
 import { useTypesSelector } from "../../../hooks/useTypeSelector";
-import { openModal } from "../../../redux/authorization/reducer";
+import { openModalAuth } from "../../../redux/authorization/reducer";
 
 export const IconBar: FC = () => {
   const dispatch = useDispatch();
@@ -42,7 +42,7 @@ export const IconBar: FC = () => {
             </>
           ) : (
             <LoginIcon
-              onClick={() => dispatch(openModal())}
+              onClick={() => dispatch(openModalAuth())}
               className={s.iconBar__iconPerson}
             />
           )}

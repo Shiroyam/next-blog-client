@@ -2,7 +2,7 @@ import { FC } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import s from "./authorization.module.scss";
 import { useDispatch } from "react-redux";
-import { closeModal } from "../../../redux/authorization/reducer";
+import { closeModalAuth } from "../../../redux/authorization/reducer";
 import { useForm } from "react-hook-form";
 import { postUser } from "../../../redux/authorization/action";
 
@@ -27,7 +27,7 @@ export const Authorization: FC = () => {
           <div className={s.modal__headerContainer}>
             <div className={s.modal__header}>Вход в аккаунт</div>
             <CloseIcon
-              onClick={() => dispatch(closeModal())}
+              onClick={() => dispatch(closeModalAuth())}
               className={s.modal__close}
             />
           </div>

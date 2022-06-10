@@ -4,9 +4,12 @@ import CloseIcon from "@mui/icons-material/Close";
 import Link from "next/link";
 import { closeMenu } from "../../../redux/menu/reducer";
 import { useAppDispatch } from "../../../hooks/useTypeSelector";
+import { useRouter } from "next/router";
+import { openModalAuth } from "../../../redux/authorization/reducer";
 
 export const MenuActive: FC = () => {
   const dispatch = useAppDispatch();
+  const router = useRouter();
 
   const onClickExit = () => {
     localStorage.clear();
@@ -22,27 +25,65 @@ export const MenuActive: FC = () => {
       <div onClick={() => dispatch(closeMenu())} className={s.menuActive}>
         <div onClick={onClickBackground} className={s.menuActive__content}>
           <div className={s.menuActive__routes}>
-            {true ? (
+            {false ? (
               <>
                 <div className={s.menuActive__headerName}>Pupkin</div>
                 <Link href="/">
-                  <a className={s.menuActive__route}>Главная</a>
+                  <a
+                    className={
+                      router.pathname === "/"
+                        ? `${s.menuActive__route} ${s.active}`
+                        : s.menuActive__route
+                    }
+                  >
+                    Главная
+                  </a>
                 </Link>
                 <Link href="/profile">
-                  <a className={s.menuActive__route}> Мой профиль </a>
+                  <a
+                    className={
+                      router.pathname === "/profile"
+                        ? `${s.menuActive__route} ${s.active}`
+                        : s.menuActive__route
+                    }
+                  >
+                    {" "}
+                    Мой профиль{" "}
+                  </a>
                 </Link>
                 <Link href="/create">
-                  <a className={s.menuActive__route}>Создать запись</a>
+                  <a
+                    className={
+                      router.pathname === "/create"
+                        ? `${s.menuActive__route} ${s.active}`
+                        : s.menuActive__route
+                    }
+                  >
+                    Создать запись
+                  </a>
                 </Link>
-                <div onClick={onClickExit} className={s.menuActive__route}>Выйти</div>
+                <div onClick={onClickExit} className={s.menuActive__route}>
+                  Выйти
+                </div>
               </>
             ) : (
               <>
-                <Link href="/" className={s.menuActive__route}>
-                  Главная
+                <Link href="/">
+                  <a
+                    className={
+                      router.pathname === "/"
+                        ? `${s.menuActive__route} ${s.active}`
+                        : s.menuActive__route
+                    }
+                  >
+                    Главная
+                  </a>
                 </Link>
                 <div className={s.menuActive__route}>Зарегистрироваться</div>
-                <div className={s.menuActive__route}>
+                <div
+                  onClick={() => dispatch(openModalAuth())}
+                  className={s.menuActive__route}
+                >
                   Войти
                 </div>
               </>

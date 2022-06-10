@@ -23,10 +23,10 @@ export const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    openModal(state: IState){
+    openModalAuth(state: IState){
         state.flagModal = true;
     },
-    closeModal(state: IState){
+    closeModalAuth(state: IState){
         state.flagModal = false;
     },
     userFetchingSuccess(state: IState, action: PayloadAction<IUserAuth>) {
@@ -39,5 +39,5 @@ export const authSlice = createSlice({
   },
 });
 
-export const { closeModal, openModal } = authSlice.actions;
+export const { openModalAuth, closeModalAuth } = authSlice.actions;
 export default authSlice.reducer;
