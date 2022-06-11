@@ -6,6 +6,7 @@ import { closeMenu } from "../../../redux/menu/reducer";
 import { useAppDispatch } from "../../../hooks/useTypeSelector";
 import { useRouter } from "next/router";
 import { openModalAuth } from "../../../redux/authorization/reducer";
+import { openModalReg } from "../../../redux/registration/reducer";
 
 export const MenuActive: FC = () => {
   const dispatch = useAppDispatch();
@@ -79,7 +80,12 @@ export const MenuActive: FC = () => {
                     Главная
                   </a>
                 </Link>
-                <div className={s.menuActive__route}>Зарегистрироваться</div>
+                <div
+                  onClick={() => dispatch(openModalReg())}
+                  className={s.menuActive__route}
+                >
+                  Зарегистрироваться
+                </div>
                 <div
                   onClick={() => dispatch(openModalAuth())}
                   className={s.menuActive__route}

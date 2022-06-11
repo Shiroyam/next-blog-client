@@ -1,15 +1,21 @@
 import { FC } from "react";
 import s from "./registration.module.scss";
 import CloseIcon from "@mui/icons-material/Close";
+import { useDispatch } from "react-redux";
+import { closeModalReg } from "../../../redux/registration/reducer";
 
 export const Registration: FC = () => {
+  const dispatch = useDispatch();
   return (
     <>
       <div className={s.modalReg}>
         <div className={s.modalReg__content}>
           <div className={s.modalReg__headerContainer}>
             <div className={s.modalReg__header}>Вход в аккаунт</div>
-            <CloseIcon className={s.modalReg__close} />
+            <CloseIcon
+              onClick={() => dispatch(closeModalReg())}
+              className={s.modalReg__close}
+            />
           </div>
           <form>
             <div className={s.modalReg__fullName}>

@@ -6,12 +6,15 @@ import Image from "next/image";
 import mainPng from "./../app/assets/main.png";
 import { Authorization } from "../app/components/modal/authorization/Authorization";
 import { useTypesSelector } from "../app/hooks/useTypeSelector";
+import { Registration } from "../app/components/modal/registration/Registration";
 
 const Home: NextPage = () => {
   const { flagModal } = useTypesSelector((state) => state.authReducer);
+  const { flagModalReg } = useTypesSelector((state) => state.registrationReducer)
   return (
     <>
       {flagModal && <Authorization />}
+      {flagModalReg && <Registration />}
       <Navbar />
       <Menu />
       <div className={s.main}>
