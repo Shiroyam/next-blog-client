@@ -11,7 +11,7 @@ export const Comments: FC = () => {
   const { comment, commentId } = useTypesSelector(
     (state) => state.commentReducer
   );
-    console.log(commentId)
+  
   return (
     <>
       {(pathname === "/profile" ? comment : commentId).map(
