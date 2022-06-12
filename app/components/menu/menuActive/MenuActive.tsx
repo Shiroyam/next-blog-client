@@ -26,7 +26,7 @@ export const MenuActive: FC = () => {
       <div onClick={() => dispatch(closeMenu())} className={s.menuActive}>
         <div onClick={onClickBackground} className={s.menuActive__content}>
           <div className={s.menuActive__routes}>
-            {false ? (
+            {localStorage.getItem("token") ? (
               <>
                 <div className={s.menuActive__headerName}>Pupkin</div>
                 <Link href="/">
