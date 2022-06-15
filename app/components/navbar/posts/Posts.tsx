@@ -17,7 +17,7 @@ export const Posts: FC = () => {
     dispatch(getPosts(page, value));
   }, [value, page]);
 
-  const { posts, isLoading, filterPosts } = useTypesSelector(
+  const { posts, isLoading } = useTypesSelector(
     (state) => state.postReducer
   );
   const router = useRouter();
@@ -26,8 +26,14 @@ export const Posts: FC = () => {
     <>
       {isLoading ? (
         <>
-          {(router.pathname === "/profile" ? filterPosts : posts).map(
-            (post: any) => (
+          {posts
+            .filter((post: any) => {
+              if (router.pathname === "/profile") {
+                return post.user._id === localStorage.getItem("id");
+              } 
+              return true
+            })
+            .map((post: any) => (
               <Link href={`/post/${post._id}`} key={post._id}>
                 <div
                   className={
@@ -56,8 +62,7 @@ export const Posts: FC = () => {
                   />
                 </div>
               </Link>
-            )
-          )}
+            ))}
         </>
       ) : (
         <>

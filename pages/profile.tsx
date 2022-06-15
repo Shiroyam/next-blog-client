@@ -8,18 +8,23 @@ import { openComments, openPost } from "../app/redux/profile/reducer";
 import { Comments } from "../app/components/layoutComments/comments/comments";
 import { useEffect, useState } from "react";
 import { getComments } from "../app/redux/comment/action";
+import { getPosts } from "../app/redux/post/action";
 
 const Profile: NextPage = () => {
   const dispatch = useDispatch();
   const [name, setName] = useState<string | null>("");
   useEffect(() => {
     dispatch(getComments());
+    dispatch(getPosts(page, value));
     setName(localStorage.getItem("name"));
   }, []);
   const { flagToggle } = useTypesSelector((state) => state.profileReducer);
-  const { filterPosts } = useTypesSelector((state) => state.postReducer);
-  const { commentId } = useTypesSelector((state) => state.commentReducer);
+  const { posts } = useTypesSelector((state) => state.postReducer);
+  const { value } = useTypesSelector((state) => state.searchReducer);
+  const { page } = useTypesSelector((state) => state.poginationReducer);
+  const { comment } = useTypesSelector((state) => state.commentReducer);
 
+  console.log(posts);
   return (
     <>
       <Menu />
@@ -51,10 +56,17 @@ const Profile: NextPage = () => {
             </div>
           </div>
           <div className={s.profile__content}>
-            {flagToggle ? 
-              filterPosts.length ? ( <Posts /> ) : ( <div>У вас еще нет постов</div> )
-              : commentId.length ? ( <Comments /> ) : ( <div>У вас еще нет комментариев</div> )
-             }
+            {flagToggle ? (
+              posts.length ? (
+                <Posts />
+              ) : (
+                <div>У вас еще нет постов</div>
+              )
+            ) : comment.length ? (
+              <Comments />
+            ) : (
+              <div>У вас еще нет комментариев</div>
+            )}
           </div>
         </div>
       </div>

@@ -2,7 +2,6 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IPost } from "./../types";
 interface IState {
   posts: any;
-  filterPosts: any;
   post: IPost;
   isLoading: boolean;
   error: string;
@@ -11,7 +10,6 @@ interface IState {
 
 const initialState: IState = {
   posts: [],
-  filterPosts: [],
   post: {
     title: "",
     description: "",
@@ -35,7 +33,6 @@ export const postSlice = createSlice({
     postsFetchingSuccess(state: IState, action: PayloadAction<IPost>) {
       state.error = "";
       state.posts = action.payload.items;
-      state.filterPosts = action.payload.items.filter((post: any) => post.user._id === localStorage.getItem("id"));
       state.total = action.payload.total;
       state.isLoading = true;
     },

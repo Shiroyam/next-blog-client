@@ -18,9 +18,7 @@ export const commentSlice = createSlice({
   initialState,
   reducers: {
     commentFetchingSuccess(state: IState, action: PayloadAction<IComment[]>) {
-      state.comment = action.payload.filter(
-        (arr) => arr.user._id === localStorage.getItem("id")
-      );
+      state.comment = action.payload
       state.error = "";
     },
     commentFetchingError(state: IState, action: PayloadAction<string>) {
