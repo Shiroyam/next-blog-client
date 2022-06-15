@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import s from "./menuActive.module.scss";
 import CloseIcon from "@mui/icons-material/Close";
 import Link from "next/link";
@@ -11,6 +11,11 @@ import { openModalReg } from "../../../redux/registration/reducer";
 export const MenuActive: FC = () => {
   const dispatch = useAppDispatch();
   const router = useRouter();
+  const [name, setName] = useState<string | null>("");
+
+  useEffect(()=>{
+    setName(localStorage.getItem("name"))
+  })
 
   const onClickExit = () => {
     localStorage.clear();
@@ -28,7 +33,7 @@ export const MenuActive: FC = () => {
           <div className={s.menuActive__routes}>
             {localStorage.getItem("token") ? (
               <>
-                <div className={s.menuActive__headerName}>Pupkin</div>
+                <div className={s.menuActive__headerName}>{name}</div>
                 <Link href="/">
                   <a
                     className={

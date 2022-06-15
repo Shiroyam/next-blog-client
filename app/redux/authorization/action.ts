@@ -13,9 +13,10 @@ export const postUser =
           email: userData.email,
         }
       );
-      const { token, _id } = response.data;
+      const { token, _id, fullName } = response.data;
       localStorage.setItem("id", _id)
       localStorage.setItem("token", token);
+      localStorage.setItem("name", fullName);
       dispatch(authSlice.actions.userFetchingSuccess(response.data));
     } catch (error: any) {
         dispatch(authSlice.actions.userFetchingErorr(error.message))
